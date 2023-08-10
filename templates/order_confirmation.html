@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Order Confirmation</h1>
+    </header>
+
+    <main>
+      <section class="order-details">
+        <h2>Thank you for your order!</h2>
+        <p>Your order has been successfully placed.</p>
+
+        <h3>Order Details</h3>
+        <ul>
+          <li><strong>Order ID:</strong> {{ order_id }}</li>
+          <li><strong>Total Amount:</strong> ${{ total_amount }}</li>
+          <li>
+            <strong>Items:</strong>
+            <ul>
+              {% for item in order_items %}
+              <li>{{ item.product_name }} (Quantity: {{ item.quantity }})</li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 E-commerce Store. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

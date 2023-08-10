@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your E-commerce Cart</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Your Cart</h1>
+    </header>
+
+    <main>
+      <div class="cart-items">
+        {% for item in cart_items %}
+        <div class="cart-item">
+          <img
+            src="{{ item.product.image_url }}"
+            alt="{{ item.product.name }}"
+          />
+          <h2>{{ item.product.name }}</h2>
+          <p>Price: ${{ item.product.price }}</p>
+          <p>Quantity: {{ item.quantity }}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart-summary">
+        <h2>Cart Summary</h2>
+        <p>Total Items: {{ total_items }}</p>
+        <p>Total Amount: ${{ total_amount }}</p>
+        <a href="{{ url_for('checkout') }}" class="checkout-button"
+          >Proceed to Checkout</a
+        >
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Your E-commerce Store</p>
+    </footer>
+  </body>
+</html>
